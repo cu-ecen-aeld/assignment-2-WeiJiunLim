@@ -40,11 +40,8 @@ then
     exit 1
 fi
 
-# Find the number of files with matching string
-matching_files_list=$(grep -rl "$searchstr" "$filesdir")
-
-# Count the number of files with matching string
-num_files=$(echo "$matching_files_list" | grep -c .)
+# Count the number of files in the directory
+num_files=$(find "$filesdir" -type f | wc -l)
 
 # Count the number of lines with matching string
 num_lines=$(grep -rh "$searchstr" "$filesdir" | wc -l)
